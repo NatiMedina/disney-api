@@ -11,9 +11,16 @@ import lombok.ToString;
 @Setter
 
 public class Pelicula {
+
+    private Long id;
+
     private String imagen;
+
     private String titulo;
+
     private Date creacion;
+
     private int calificacion;
+
     private List<Personaje> personajes;
 }
