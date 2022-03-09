@@ -10,7 +10,7 @@ public interface PersonajeDao {
 
     Personaje crearPersonaje(Personaje personaje);
 
-    void eliminarPersonaje(String nombre);
+    void eliminarPersonaje(Long id);
 
-    Personaje modificarPersonaje(String nombre);
+    Personaje modificarPersonaje(Long id, Personaje personaje);
 }
