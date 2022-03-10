@@ -20,7 +20,7 @@ public class PeliculaDaoImp implements PeliculaDao{
 
     @Override
     public List<Pelicula> getPeliculas() {
-        String query = "FROM Pelicula";
+        String query = "FROM Peliculas";
         return entityManager.createQuery(query).getResultList();
     }
 
