@@ -5,11 +5,16 @@ import lombok.Setter;
 import lombok.ToString;
 
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.util.List;
 
+@Entity
+@Table(name = "personajes")
 @ToString
 @Getter
 @Setter
+
 
 public class Personaje {
 
