@@ -32,11 +32,11 @@ public class GeneroDaoImp implements GeneroDao{
 
     @Override
     public void eliminarGenero(Long id) {
-        Genero genero = entityManager.find(Genero.class, id){
+        Genero genero = entityManager.find(Genero.class, id);
             if (genero != null) {
                 entityManager.remove(genero);
             }
-        }
+
     }
 
     @Override
