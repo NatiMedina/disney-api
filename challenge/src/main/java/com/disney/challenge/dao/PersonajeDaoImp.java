@@ -1,6 +1,5 @@
 package com.disney.challenge.dao;
 
-import com.disney.challenge.models.Pelicula;
 import com.disney.challenge.models.Personaje;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,8 +16,8 @@ public class PersonajeDaoImp implements PersonajeDao {
     EntityManager entityManager;
 
     @Override
-    public List<Personaje> getPersonajes() {
-        String query = "FROM Personajes";
+    public List<List<String>> getPersonajes() {
+        String query = "select imagen, nombre FROM Personajes group by personaje";
         return entityManager.createQuery(query).getResultList();
     }
 
