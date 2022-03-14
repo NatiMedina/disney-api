@@ -16,8 +16,9 @@ public class PersonajeDaoImp implements PersonajeDao {
     EntityManager entityManager;
 
     @Override
-    public List<List<String>> getPersonajes() {
-        String query = "select imagen, nombre FROM Personajes group by personaje";
+    @Transactional
+    public List<Personaje> getPersonajes() {
+        String query = "FROM personajes";
         return entityManager.createQuery(query).getResultList();
     }
 

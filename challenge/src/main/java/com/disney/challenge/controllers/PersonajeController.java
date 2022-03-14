@@ -14,14 +14,15 @@ import java.util.List;
 public class PersonajeController {
 
     @Autowired
-    private PersonajeDao personajeDao;
+    public PersonajeDao personajeDao;
 
     @RequestMapping(value = "/character", method = RequestMethod.POST)
     public Personaje createPersonaje(@RequestBody Personaje personaje){
         return personajeDao.crearPersonaje(personaje);
     }
+
     @RequestMapping(value = "/characters", method = RequestMethod.GET)
-    public List<List<String>> getPersonajes(){
+    public List<Personaje> getPersonajes(){
         return personajeDao.getPersonajes();
     }
 }

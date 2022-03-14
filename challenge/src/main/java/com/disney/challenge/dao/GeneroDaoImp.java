@@ -10,7 +10,6 @@ import java.util.List;
 
 @Repository
 @Transactional
-
 public class GeneroDaoImp implements GeneroDao{
 
     @PersistenceContext
@@ -48,9 +47,6 @@ public class GeneroDaoImp implements GeneroDao{
             }
             if (genero.getImagen() != null) {
                 oldGenero.setImagen(genero.getImagen());
-            }
-            if (genero.getPeliculas() != null) {
-                oldGenero.setPeliculas(genero.getPeliculas());
             }
         }
         return oldGenero;

@@ -11,8 +11,6 @@ import java.util.List;
 
 @Repository
 @Transactional
-
-
 public class PeliculaDaoImp implements PeliculaDao{
 
     @PersistenceContext

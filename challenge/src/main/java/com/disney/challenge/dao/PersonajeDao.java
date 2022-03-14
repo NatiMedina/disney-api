@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface PersonajeDao {
 
-    List<List<String>> getPersonajes();
+    List<Personaje> getPersonajes();
 
     Personaje crearPersonaje(Personaje personaje);
 
