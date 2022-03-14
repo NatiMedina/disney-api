@@ -12,18 +12,19 @@ import javax.persistence.*;
 @ToString
 @Getter
 @Setter
-
 public class Pelicula {
-
-    private Long id;
-
-    private String imagen;
-
-    private String titulo;
-
-    private Date creacion;
-
-    private int calificacion;
-
-    private List<Personaje> personajes;
+        @Id
+        @Column(name = "id")
+        @GeneratedValue(strategy=GenerationType.IDENTITY)
+        private Long id;
+        @Column(name = "imagen")
+        private String imagen;
+        @Column(name = "titulo")
+        private String titulo;
+        @Column(name = "creacion")
+        private Date creacion;
+        @Column(name = "calificacion")
+        private int calificacion;
+        @ManyToMany
+        private List<Personaje> personajes;
 }
