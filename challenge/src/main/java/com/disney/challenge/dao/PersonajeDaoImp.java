@@ -16,6 +16,11 @@ public class PersonajeDaoImp implements PersonajeDao {
     EntityManager entityManager;
 
     @Override
+    public Personaje getPersonaje(Long id) {
+        return entityManager.find(Personaje.class, id);
+    }
+
+    @Override
     @Transactional
     public List<Personaje> getPersonajes() {
         String query = "FROM Personaje";
