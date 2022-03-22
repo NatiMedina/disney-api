@@ -18,7 +18,7 @@ public class PersonajeDaoImp implements PersonajeDao {
     @Override
     @Transactional
     public List<Personaje> getPersonajes() {
-        String query = "FROM personajes";
+        String query = "FROM Personaje";
         return entityManager.createQuery(query).getResultList();
     }
 

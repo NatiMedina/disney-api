@@ -24,7 +24,12 @@ public class Pelicula {
         @Column(name = "creacion")
         private Date creacion;
         @Column(name = "calificacion")
-        private int calificacion;
+        private Integer calificacion;
         @ManyToMany
+        @JoinTable(
+                name = "pelicula_personaje",
+                joinColumns = @JoinColumn(name = "pelicula_id"),
+                inverseJoinColumns = @JoinColumn(name = "personaje_id")
+        )
         private List<Personaje> personajes;
 }

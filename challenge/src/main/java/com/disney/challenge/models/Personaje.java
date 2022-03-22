@@ -23,11 +23,11 @@ public class Personaje {
     @Column(name = "nombre")
     private String nombre;
     @Column(name = "edad")
-    private int edad;
+    private Integer edad;
     @Column(name = "peso")
-    private double peso;
+    private Double peso;
     @Column(name = "historia")
     private String historia;
-    @ManyToMany
+    @ManyToMany(mappedBy = "personajes")
     private List<Pelicula> peliculas;
 }
