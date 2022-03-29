@@ -1,13 +1,18 @@
 package com.disney.challenge.dao;
 
 import com.disney.challenge.models.Personaje;
+
 import org.hibernate.criterion.MatchMode;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Repository
 @Transactional
@@ -23,7 +28,7 @@ public class PersonajeDaoImp implements PersonajeDao {
 
     @Override
     @Transactional
-    public List<Personaje> getPersonajes(String name, Integer age, Long movieId) {
+    /*public List<Personaje> getPersonajes(String name, Integer age, Long movieId) {
         if((name == null || name.isEmpty()) && age == null && movieId == null ){
            return entityManager.createQuery("From Personaje")
                     .getResultList();
@@ -32,6 +37,31 @@ public class PersonajeDaoImp implements PersonajeDao {
         String query = "FROM Personaje where LOWER(nombre) like LOWER(:name)";
 
         return entityManager.createQuery(query).setParameter("name",  MatchMode.ANYWHERE.toMatchString(name)).getResultList();
+    }*/
+    public List<Personaje> getPersonajes(String name, Integer age, Long movieId) {
+        Map<String, Object> parameterMap = new HashMap<String, Object>();
+        List<String> whereClause = new ArrayList<String>();
+        StringBuilder queryBuilder = new StringBuilder();
+        queryBuilder.append("select p from Personaje p ");
+
+        if (!name.isEmpty()){
+            whereClause.add(" p.nombre =:name ");
+            parameterMap.put("name", name);
+        }
+        if (age != null){
+            whereClause.add(" p.edad =:age ");
+            parameterMap.put("age", age);
+        }
+
+        queryBuilder.append(" where " + String.join( " and ", whereClause));
+        Query jpaQuery = entityManager.createQuery(queryBuilder.toString());
+
+        for (String key : parameterMap.keySet()){
+            jpaQuery.setParameter(key, parameterMap.get(key));
+        }
+
+        return jpaQuery.getResultList();
+
     }
 
     @Override
