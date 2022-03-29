@@ -15,6 +15,4 @@ public interface PersonajeDao {
     void eliminarPersonaje(Long id);
 
     Personaje modificarPersonaje(Long id, Personaje personaje);
-
-    List<Personaje> getPersonajePorNombre(String nombre);
 }

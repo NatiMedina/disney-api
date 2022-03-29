@@ -74,11 +74,4 @@ public class PersonajeDaoImp implements PersonajeDao {
         return oldPersonaje;
     }
 
-    @Override
-    public List<Personaje> getPersonajePorNombre(String nombrep) {
-        String query = "FROM Personaje where nombre = nombrep";
-        return entityManager.createQuery(query).getResultList();
-
-
-    }
 }
