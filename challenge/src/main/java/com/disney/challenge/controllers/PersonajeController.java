@@ -16,13 +16,13 @@ public class PersonajeController {
     public PersonajeDao personajeDao;
 
     @RequestMapping(value = "/character", method = RequestMethod.POST)
-    public Personaje createPersonaje(@RequestBody Personaje personaje){
+    public Personaje createPersonaje(@RequestBody Personaje personaje) {
         return personajeDao.crearPersonaje(personaje);
     }
 
     @RequestMapping(value = "/characters", method = RequestMethod.GET)
-    public Map<String, String> getPersonajes(){
-        List<Personaje> personajes = personajeDao.getPersonajes();
+    public Map<String, String> getPersonajes(@RequestParam(required = false) String name, @RequestParam(required = false) Integer age, @RequestParam(required = false) Long movies) {
+        List<Personaje> personajes = personajeDao.getPersonajes(name, age, movies);
         Map<String, String> nombreImagen = new HashMap<>();
         for (Personaje p : personajes) {
             nombreImagen.put(p.getNombre(), p.getImagen());
@@ -31,8 +31,8 @@ public class PersonajeController {
     }
 
     @RequestMapping(value = "character/{id}", method = RequestMethod.GET)
-    public Personaje getPersonaje(@PathVariable Long id){
-         return personajeDao.getPersonaje(id);
+    public Personaje getPersonaje(@PathVariable Long id) {
+        return personajeDao.getPersonaje(id);
     }
 
     @RequestMapping(value = "character/{id}", method = RequestMethod.DELETE)
